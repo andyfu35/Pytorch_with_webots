@@ -1,0 +1,750 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.17649807619820357 0.08180386866968858 0.9808957927165379 2.544857390043272
+  position 5.152364427784338 0.7635048227678007 1.9492358308566125
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0 0 -0.08
+  floorSize 10 10
+}
+Robot {
+  translation 2.121947022159827 3.535277020465348 0.3092475005198827
+  rotation 0.5834816902553237 0.7232290527066584 -0.36944398013476987 2.23956008594919
+  children [
+    Shape {
+      appearance DEF mat PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF base_link Mesh {
+        url [
+          "E:/FirstTry0314/meshes/base_link.STL"
+        ]
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 4.8841432312635535e-05
+        axis -1 -4e-06 0
+        anchor 0.091803 -0.25 0.012279
+      }
+      device [
+        RotationalMotor {
+          name "Joint-11"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "Joint-11_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.091803 -0.25 0.012279
+        rotation 0.5693881650832388 -0.5693861651145403 0.5929557423950796 2.071149190138739
+        children [
+          Shape {
+            appearance USE mat
+            geometry DEF Link-11 Mesh {
+              url [
+                "E:/FirstTry0314/meshes/Link-11.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position 4.0438436005868184e-05
+              axis -1 -4e-06 0
+              anchor 0.037602 -0.05 0
+            }
+            device [
+              RotationalMotor {
+                name "Joint-12"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "Joint-12_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.037602 -0.05 0
+              rotation 0.5615909134362318 -0.5615889134685158 0.6076458987067309 2.049551290062558
+              children [
+                Shape {
+                  appearance USE mat
+                  geometry DEF Link-12 Mesh {
+                    url [
+                      "E:/FirstTry0314/meshes/Link-12.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position -3.738167371460087e-05
+                    axis 1 7e-06 -1e-06
+                    anchor 0 -0.037398 0.025
+                  }
+                  device [
+                    RotationalMotor {
+                      name "Joint-13"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "Joint-13_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.037398 0.025
+                    rotation 0.7044893489549766 0.0859622840898255 0.7044893490486946 2.970099664997739
+                    children [
+                      Shape {
+                        appearance USE mat
+                        geometry DEF Link-13 Mesh {
+                          url [
+                            "E:/FirstTry0314/meshes/Link-13.STL"
+                          ]
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position 2.9100826274005545e-05
+                          axis 4e-06 -6e-06 -1
+                          anchor 0 0.2 0
+                        }
+                        device [
+                          RotationalMotor {
+                            name "Joint-14"
+                            maxTorque 10000
+                          }
+                          PositionSensor {
+                            name "Joint-14_sensor"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 0.2 0
+                          rotation -0.9475244989722046 -0.3196831616561506 -1.0000477198595129e-06 3.141599999974626
+                          children [
+                            Shape {
+                              appearance USE mat
+                              geometry DEF Link-14 Mesh {
+                                url [
+                                  "E:/FirstTry0314/meshes/Link-14.STL"
+                                ]
+                              }
+                            }
+                          ]
+                          name "Link-14"
+                          boundingObject USE Link-14
+                          physics Physics {
+                            density -1
+                            mass 1.3182
+                            centerOfMass [
+                              0.047942 0.21275 0.00054
+                            ]
+                            inertiaMatrix [
+                              0.028713 0.00066838 0.028833
+                              -0.00057712 3.2444e-05 0.00015134
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                    name "Link-13"
+                    boundingObject USE Link-13
+                    physics Physics {
+                      density -1
+                      mass 0.49632
+                      centerOfMass [
+                        0 0.1 0.002867
+                      ]
+                      inertiaMatrix [
+                        0.0019227 0.00020011 0.0019242
+                        -1.2535e-18 2.7105e-20 -5.7725e-19
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "Link-12"
+              boundingObject USE Link-12
+              physics Physics {
+                density -1
+                mass 0.12291
+                centerOfMass [
+                  -0.005788 -0.036825 0.004011
+                ]
+                inertiaMatrix [
+                  7.6838e-05 7.1867e-05 4.7075e-05
+                  -4.075e-07 1.327e-05 2.8244e-07
+                ]
+              }
+            }
+          }
+        ]
+        name "Link-11"
+        boundingObject USE Link-11
+        physics Physics {
+          density -1
+          mass 0.13426
+          centerOfMass [
+            0.000524 -0.048741 0
+          ]
+          inertiaMatrix [
+            5.9611e-05 5.5476e-05 6.1772e-05
+            8.862e-08 -1.2705e-21 -8.8508e-22
+          ]
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 457.7649177363753
+        axis 1 1.1e-05 -1e-06
+        anchor -0.1082 -0.25 0.012279
+      }
+      device [
+        RotationalMotor {
+          name "Joint-21"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "Joint-21_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.1082 -0.25 0.012279
+        rotation -0.6935491696513565 -0.6935565219570249 -0.19485610107663728 2.756697762838797
+        children [
+          Shape {
+            appearance USE mat
+            geometry DEF Link-21 Mesh {
+              url [
+                "E:/FirstTry0314/meshes/Link-21.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position -5.5469843719467535e-05
+              axis -1 1.1e-05 0
+              anchor 0.038328 -0.05 0
+            }
+            device [
+              RotationalMotor {
+                name "Joint-22"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "Joint-22_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.038328 -0.05 0
+              rotation -0.5844222464797593 0.5844282465794323 -0.5629336216816703 4.167040582117857
+              children [
+                Shape {
+                  appearance USE mat
+                  geometry DEF Link-22 Mesh {
+                    url [
+                      "E:/FirstTry0314/meshes/Link-22.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 2.762891340036186e-05
+                    axis 1 7e-06 -1e-06
+                    anchor 0 -0.036672 0.025
+                  }
+                  device [
+                    RotationalMotor {
+                      name "Joint-23"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "Joint-23_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.036672 0.025
+                    rotation 0.703890128745221 0.09527525076732546 0.7038901286751074 2.9516254477092136
+                    children [
+                      Shape {
+                        appearance USE mat
+                        geometry DEF Link-23 Mesh {
+                          url [
+                            "E:/FirstTry0314/meshes/Link-23.STL"
+                          ]
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position -1.2099412424927682e-05
+                          axis -4e-06 6e-06 -1
+                          anchor 0 0.2 0
+                        }
+                        device [
+                          RotationalMotor {
+                            name "Joint-24"
+                            maxTorque 10000
+                          }
+                          PositionSensor {
+                            name "Joint-24_sensor"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 0.2 0
+                          rotation 0.9662970207681875 0.2574297334293871 -9.999804809140873e-07 3.1416000000159787
+                          children [
+                            Shape {
+                              appearance USE mat
+                              geometry DEF Link-24 Mesh {
+                                url [
+                                  "E:/FirstTry0314/meshes/Link-24.STL"
+                                ]
+                              }
+                            }
+                          ]
+                          name "Link-24"
+                          boundingObject USE Link-24
+                          physics Physics {
+                            density -1
+                            mass 1.3182
+                            centerOfMass [
+                              0.047942 0.21275 0.00054
+                            ]
+                            inertiaMatrix [
+                              0.028713 0.00066838 0.028833
+                              -0.00057712 3.2444e-05 0.00015134
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                    name "Link-23"
+                    boundingObject USE Link-23
+                    physics Physics {
+                      density -1
+                      mass 0.49632
+                      centerOfMass [
+                        0 0.1 0.002867
+                      ]
+                      inertiaMatrix [
+                        0.0019227 0.00020011 0.0019242
+                        1.527e-18 -2.7105e-20 1.6348e-18
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "Link-22"
+              boundingObject USE Link-22
+              physics Physics {
+                density -1
+                mass 0.12291
+                centerOfMass [
+                  -0.005788 -0.036099 0.004011
+                ]
+                inertiaMatrix [
+                  7.6838e-05 7.1867e-05 4.7075e-05
+                  -4.075e-07 1.327e-05 2.8244e-07
+                ]
+              }
+            }
+          }
+        ]
+        name "Link-21"
+        boundingObject USE Link-21
+        physics Physics {
+          density -1
+          mass 0.13426
+          centerOfMass [
+            0.000524 -0.048741 0
+          ]
+          inertiaMatrix [
+            5.9611e-05 5.5476e-05 6.1772e-05
+            8.862e-08 1.6941e-21 1.4029e-21
+          ]
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -6.762537522745401e-05
+        axis -1 -4e-06 0
+        anchor 0.091803 0.05 0.012279
+      }
+      device [
+        RotationalMotor {
+          name "Joint-31"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "Joint-31_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.091803 0.05 0.012279
+        rotation 0.5694114989759727 -0.5694094989330492 0.5929109270023193 2.0712155060541537
+        children [
+          Shape {
+            appearance USE mat
+            geometry DEF Link-31 Mesh {
+              url [
+                "E:/FirstTry0314/meshes/Link-31.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position -4.708989125927869e-05
+              axis -1 -4e-06 0
+              anchor 0.037602 -0.05 0
+            }
+            device [
+              RotationalMotor {
+                name "Joint-32"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "Joint-32_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.037602 -0.05 0
+              rotation 0.5616091187867721 -0.5616071187466775 0.6076122463122355 2.0496004457759485
+              children [
+                Shape {
+                  appearance USE mat
+                  geometry DEF Link-32 Mesh {
+                    url [
+                      "E:/FirstTry0314/meshes/Link-32.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 2.827884409393582e-05
+                    axis 1 7e-06 -1e-06
+                    anchor 0 -0.037398 0.025
+                  }
+                  device [
+                    RotationalMotor {
+                      name "Joint-33"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "Joint-33_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.037398 0.025
+                    rotation 0.7038949494376346 0.0952039936722987 0.7038949493674712 2.9517669053248707
+                    children [
+                      Shape {
+                        appearance USE mat
+                        geometry DEF Link-33 Mesh {
+                          url [
+                            "E:/FirstTry0314/meshes/Link-33.STL"
+                          ]
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position -4.06636042495535e-05
+                          axis 3e-06 -7e-06 -1
+                          anchor 0 0.2 0
+                        }
+                        device [
+                          RotationalMotor {
+                            name "Joint-34"
+                            maxTorque 10000
+                          }
+                          PositionSensor {
+                            name "Joint-34_sensor"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 0.2 0
+                          rotation -0.9815863392133038 -0.19101900080574477 -9.999235570702164e-07 3.1416000000247126
+                          children [
+                            Shape {
+                              appearance USE mat
+                              geometry DEF Link-34 Mesh {
+                                url [
+                                  "E:/FirstTry0314/meshes/Link-34.STL"
+                                ]
+                              }
+                            }
+                          ]
+                          name "Link-34"
+                          boundingObject USE Link-34
+                          physics Physics {
+                            density -1
+                            mass 1.3182
+                            centerOfMass [
+                              0.047942 0.21275 0.00054
+                            ]
+                            inertiaMatrix [
+                              0.028713 0.00066838 0.028833
+                              -0.00057712 3.2444e-05 0.00015134
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                    name "Link-33"
+                    boundingObject USE Link-33
+                    physics Physics {
+                      density -1
+                      mass 0.49632
+                      centerOfMass [
+                        0 0.1 0.002867
+                      ]
+                      inertiaMatrix [
+                        0.0019227 0.00020011 0.0019242
+                        -1.9327e-18 5.421e-20 -2.8376e-19
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "Link-32"
+              boundingObject USE Link-32
+              physics Physics {
+                density -1
+                mass 0.12291
+                centerOfMass [
+                  -0.005788 -0.036825 0.004011
+                ]
+                inertiaMatrix [
+                  7.6838e-05 7.1867e-05 4.7075e-05
+                  -4.075e-07 1.327e-05 2.8244e-07
+                ]
+              }
+            }
+          }
+        ]
+        name "Link-31"
+        boundingObject USE Link-31
+        physics Physics {
+          density -1
+          mass 0.13426
+          centerOfMass [
+            0.000524 -0.048741 0
+          ]
+          inertiaMatrix [
+            5.9611e-05 5.5476e-05 6.1772e-05
+            8.862e-08 -5.294e-21 2.3868e-21
+          ]
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 7.817538197037365e-05
+        axis 1 1.1e-05 -1e-06
+        anchor -0.1082 0.05 0.012279
+      }
+      device [
+        RotationalMotor {
+          name "Joint-41"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "Joint-41_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.1082 0.05 0.012279
+        rotation 0.6000472006798463 0.6000532005134996 0.5290364009307734 4.114814909911001
+        children [
+          Shape {
+            appearance USE mat
+            geometry DEF Link-41 Mesh {
+              url [
+                "E:/FirstTry0314/meshes/Link-41.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position -7.99316773536303e-05
+              axis -1 -4e-06 0
+              anchor 0.038483 -0.05 0
+            }
+            device [
+              RotationalMotor {
+                name "Joint-42"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "Joint-42_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.038483 -0.05 0
+              rotation 0.5844291593417111 -0.584427159278142 0.5629275736799736 2.1161677136240917
+              children [
+                Shape {
+                  appearance USE mat
+                  geometry DEF Link-42 Mesh {
+                    url [
+                      "E:/FirstTry0314/meshes/Link-42.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position -4.183587658388646e-05
+                    axis 1 7e-06 -1e-06
+                    anchor 0 -0.036517 0.025
+                  }
+                  device [
+                    RotationalMotor {
+                      name "Joint-43"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "Joint-43_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.036517 0.025
+                    rotation 0.7049396940587396 0.07823078255647294 0.7049396941589915 2.985459508219325
+                    children [
+                      Shape {
+                        appearance USE mat
+                        geometry DEF Link-43 Mesh {
+                          url [
+                            "E:/FirstTry0314/meshes/Link-43.STL"
+                          ]
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position 2.7657509134124827e-05
+                          axis 3e-06 -7e-06 -1
+                          anchor 0 0.2 0
+                        }
+                        device [
+                          RotationalMotor {
+                            name "Joint-44"
+                            maxTorque 10000
+                          }
+                          PositionSensor {
+                            name "Joint-44_sensor"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 0.2 0
+                          rotation -0.9722573894899064 -0.23391359212596569 -1.0000531833368943e-06 3.1415999999922755
+                          children [
+                            Shape {
+                              appearance USE mat
+                              geometry DEF Link-44 Mesh {
+                                url [
+                                  "E:/FirstTry0314/meshes/Link-44.STL"
+                                ]
+                              }
+                            }
+                          ]
+                          name "Link-44"
+                          boundingObject USE Link-44
+                          physics Physics {
+                            density -1
+                            mass 1.3182
+                            centerOfMass [
+                              0.047942 0.21275 0.00054
+                            ]
+                            inertiaMatrix [
+                              0.028713 0.00066838 0.028833
+                              -0.00057712 3.2444e-05 0.00015134
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                    name "Link-43"
+                    boundingObject USE Link-43
+                    physics Physics {
+                      density -1
+                      mass 0.49632
+                      centerOfMass [
+                        0 0.1 0.002867
+                      ]
+                      inertiaMatrix [
+                        0.0019227 0.00020011 0.0019242
+                        1.3239e-18 2.7105e-20 -4.3707e-19
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "Link-42"
+              boundingObject USE Link-42
+              physics Physics {
+                density -1
+                mass 0.12291
+                centerOfMass [
+                  -0.005788 -0.035945 0.004011
+                ]
+                inertiaMatrix [
+                  7.6838e-05 7.1867e-05 4.7075e-05
+                  -4.075e-07 1.327e-05 2.8244e-07
+                ]
+              }
+            }
+          }
+        ]
+        name "Link-41"
+        boundingObject USE Link-41
+        physics Physics {
+          density -1
+          mass 0.13426
+          centerOfMass [
+            0.000524 -0.048741 0
+          ]
+          inertiaMatrix [
+            5.9611e-05 5.5476e-05 6.1772e-05
+            8.862e-08 0 1.4261e-21
+          ]
+        }
+      }
+    }
+  ]
+  name "FirstTry0314"
+  boundingObject USE base_link
+  physics Physics {
+    density -1
+    mass 1.3313
+    centerOfMass [
+      -0.008197 -0.00733 0.1
+    ]
+    inertiaMatrix [
+      0.020645 0.023213 0.0034844
+      -3.7461e-19 -2.6999e-20 1.2187e-18
+    ]
+  }
+  recognitionColors [
+    0 0 0
+  ]
+  controller "<extern>"
+  controllerArgs [
+    ""
+  ]
+  supervisor TRUE
+  synchronization FALSE
+  battery [
+    0
+  ]
+}
