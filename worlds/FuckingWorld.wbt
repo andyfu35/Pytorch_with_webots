@@ -1,0 +1,774 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.21142633881345266 -0.12513974949418843 0.9693497543985199 3.7577005916006274
+  position 1.425741360278624 1.1881034065225764 1.0520150606737346
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 10 10
+  floorTileSize 10 10
+}
+DEF Node_base Robot {
+  translation 0.08273965803659175 0.05827098699583809 0.17630488373671171
+  rotation -0.09214905417686743 -0.6080699708715829 -0.788517255574373 0.041562879321857496
+  children [
+    Shape {
+      appearance DEF mat PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF base_link Mesh {
+        url [
+          "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/base_link.STL"
+        ]
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 1.3618612866924833e-05
+        axis -1 -4e-06 0
+        anchor 0.091803 -0.25 0.012279
+      }
+      device [
+        RotationalMotor {
+          name "Joint-11"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "Joint-11_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.091803 -0.25 0.012279
+        rotation 0.5693952221877194 -0.5693932221965721 0.5929421889749479 2.0711692456393385
+        children [
+          Shape {
+            appearance USE mat
+            geometry DEF Link-11 Mesh {
+              url [
+                "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-11.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position 4.6185396186029945e-06
+              axis -1 -4e-06 0
+              anchor 0.037602 -0.05 0
+            }
+            device [
+              RotationalMotor {
+                name "Joint-12"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "Joint-12_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.037602 -0.05 0
+              rotation 0.5615983639406772 -0.5615963639433404 0.6076321268866335 2.049571406243862
+              children [
+                Shape {
+                  appearance USE mat
+                  geometry DEF Link-12 Mesh {
+                    url [
+                      "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-12.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position -7.707962876289373e-07
+                    axis 1 7e-06 -1e-06
+                    anchor 0 -0.037398 0.025
+                  }
+                  device [
+                    RotationalMotor {
+                      name "Joint-13"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "Joint-13_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.037398 0.025
+                    rotation 0.704490141542521 0.0859492928189356 0.7044901415444531 2.970125456981687
+                    children [
+                      Shape {
+                        appearance USE mat
+                        geometry DEF Link-13 Mesh {
+                          url [
+                            "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-13.STL"
+                          ]
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position -8.855887870992198e-07
+                          axis 4e-06 -6e-06 -1
+                          anchor 0 0.2 0
+                        }
+                        device [
+                          RotationalMotor {
+                            name "Joint-14"
+                            maxTorque 10000
+                          }
+                          PositionSensor {
+                            name "Joint-14_sensor"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 0.2 0
+                          rotation -0.9475197057897181 -0.3196973680516719 -9.999983817906448e-07 3.141600000000772
+                          children [
+                            Shape {
+                              appearance USE mat
+                              geometry DEF Link-14 Mesh {
+                                url [
+                                  "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-14.STL"
+                                ]
+                              }
+                            }
+                          ]
+                          name "Link-14"
+                          boundingObject USE Link-14
+                          physics Physics {
+                            density -1
+                            mass 1.3182
+                            centerOfMass [
+                              0.047942 0.21275 0.00054
+                            ]
+                            inertiaMatrix [
+                              0.028713 0.00066838 0.028833
+                              -0.00057712 3.2444e-05 0.00015134
+                            ]
+                          }
+                          linearVelocity -1.555432324979276e-05 -5.491016699755661e-05 -1.4554124549346188e-06
+                          angularVelocity 0.00014776545851401523 -1.980091812279044e-05 -8.645839527866666e-05
+                        }
+                      }
+                    ]
+                    name "Link-13"
+                    boundingObject USE Link-13
+                    physics Physics {
+                      density -1
+                      mass 0.49632
+                      centerOfMass [
+                        0 0.1 0.002867
+                      ]
+                      inertiaMatrix [
+                        0.0019227 0.00020011 0.0019242
+                        -1.2535e-18 2.7105e-20 -5.7725e-19
+                      ]
+                    }
+                    linearVelocity -1.5368129086717006e-05 -5.7652408892087815e-05 -1.5891923382346768e-05
+                    angularVelocity 0.0001478221047659189 -1.9838078400391057e-05 -8.642068761815063e-05
+                  }
+                }
+              ]
+              name "Link-12"
+              boundingObject USE Link-12
+              physics Physics {
+                density -1
+                mass 0.12291
+                centerOfMass [
+                  -0.005788 -0.036825 0.004011
+                ]
+                inertiaMatrix [
+                  7.6838e-05 7.1867e-05 4.7075e-05
+                  -4.075e-07 1.327e-05 2.8244e-07
+                ]
+              }
+              linearVelocity -1.3032706161859066e-05 -3.80584862429684e-05 2.732807010140993e-06
+              angularVelocity 0.000147851590560898 -1.985305198254389e-05 -8.637789051068044e-05
+            }
+          }
+        ]
+        name "Link-11"
+        boundingObject USE Link-11
+        physics Physics {
+          density -1
+          mass 0.13426
+          centerOfMass [
+            0.000524 -0.048741 0
+          ]
+          inertiaMatrix [
+            5.9611e-05 5.5476e-05 6.1772e-05
+            8.862e-08 -1.2705e-21 -8.8508e-22
+          ]
+        }
+        linearVelocity -1.2544416440725566e-05 -2.3290236785072014e-05 1.4492436829936823e-05
+        angularVelocity 0.0001467939120546304 -1.7834344899270896e-05 -4.107574206061083e-05
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -3.5640021173930045e-05
+        axis 1 1.1e-05 -1e-06
+        anchor -0.1082 -0.25 0.012279
+      }
+      device [
+        RotationalMotor {
+          name "Joint-21"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "Joint-21_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.1082 -0.25 0.012279
+        rotation 0.598313918233394 0.5983199183107015 0.5329481500116865 4.120917675972372
+        children [
+          Shape {
+            appearance USE mat
+            geometry DEF Link-21 Mesh {
+              url [
+                "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-21.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position 1.9668876267538858e-05
+              axis -1 1.1e-05 0
+              anchor 0.038328 -0.05 0
+            }
+            device [
+              RotationalMotor {
+                name "Joint-22"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "Joint-22_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.038328 -0.05 0
+              rotation -0.5844083204844372 0.5844143204486191 -0.5629625360564754 4.1670844948172405
+              children [
+                Shape {
+                  appearance USE mat
+                  geometry DEF Link-22 Mesh {
+                    url [
+                      "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-22.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 1.6903365629690286e-05
+                    axis 1 7e-06 -1e-06
+                    anchor 0 -0.036672 0.025
+                  }
+                  device [
+                    RotationalMotor {
+                      name "Joint-23"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "Joint-23_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.036672 0.025
+                    rotation 0.7038898709376663 0.09527905983530881 0.7038898708947694 2.951617898103793
+                    children [
+                      Shape {
+                        appearance USE mat
+                        geometry DEF Link-23 Mesh {
+                          url [
+                            "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-23.STL"
+                          ]
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position -1.204937473453721e-05
+                          axis -4e-06 6e-06 -1
+                          anchor 0 0.2 0
+                        }
+                        device [
+                          RotationalMotor {
+                            name "Joint-24"
+                            maxTorque 10000
+                          }
+                          PositionSensor {
+                            name "Joint-24_sensor"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 0.2 0
+                          rotation 0.9662970272087817 0.25742970925375164 -9.999805598307274e-07 3.141600000015913
+                          children [
+                            Shape {
+                              appearance USE mat
+                              geometry DEF Link-24 Mesh {
+                                url [
+                                  "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-24.STL"
+                                ]
+                              }
+                            }
+                          ]
+                          name "Link-24"
+                          boundingObject USE Link-24
+                          physics Physics {
+                            density -1
+                            mass 1.3182
+                            centerOfMass [
+                              0.047942 0.21275 0.00054
+                            ]
+                            inertiaMatrix [
+                              0.028713 0.00066838 0.028833
+                              -0.00057712 3.2444e-05 0.00015134
+                            ]
+                          }
+                          linearVelocity -6.332352732525793e-06 3.8745776770100596e-05 4.441711356926961e-06
+                          angularVelocity -0.0001879528500790517 -2.163765187809672e-05 -0.0001567712159635387
+                        }
+                      }
+                    ]
+                    name "Link-23"
+                    boundingObject USE Link-23
+                    physics Physics {
+                      density -1
+                      mass 0.49632
+                      centerOfMass [
+                        0 0.1 0.002867
+                      ]
+                      inertiaMatrix [
+                        0.0019227 0.00020011 0.0019242
+                        1.527e-18 -2.7105e-20 1.6348e-18
+                      ]
+                    }
+                    linearVelocity -7.5537465779901985e-06 3.5989110207041366e-05 4.425481089059484e-06
+                    angularVelocity -0.00018882944311475862 -2.0723814035784755e-05 -0.0001565742082589209
+                  }
+                }
+              ]
+              name "Link-22"
+              boundingObject USE Link-22
+              physics Physics {
+                density -1
+                mass 0.12291
+                centerOfMass [
+                  -0.005788 -0.036099 0.004011
+                ]
+                inertiaMatrix [
+                  7.6838e-05 7.1867e-05 4.7075e-05
+                  -4.075e-07 1.327e-05 2.8244e-07
+                ]
+              }
+              linearVelocity -1.0159384201294262e-05 8.533899184053914e-06 9.470473362932088e-06
+              angularVelocity -0.00018933799264064783 -2.0191326322860644e-05 -0.0001562208212254388
+            }
+          }
+        ]
+        name "Link-21"
+        boundingObject USE Link-21
+        physics Physics {
+          density -1
+          mass 0.13426
+          centerOfMass [
+            0.000524 -0.048741 0
+          ]
+          inertiaMatrix [
+            5.9611e-05 5.5476e-05 6.1772e-05
+            8.862e-08 1.6941e-21 1.4029e-21
+          ]
+        }
+        linearVelocity -1.059462102399913e-05 -8.309488135868573e-06 1.0436671665674433e-05
+        angularVelocity -0.00019204402483005394 -7.085446766746945e-06 -4.993134581061676e-05
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -3.341577051452428e-05
+        axis -1 -4e-06 0
+        anchor 0.091803 0.05 0.012279
+      }
+      device [
+        RotationalMotor {
+          name "Joint-31"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "Joint-31_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.091803 0.05 0.012279
+        rotation 0.5694046454279619 -0.5694026454068394 0.592924090561979 2.071196026906999
+        children [
+          Shape {
+            appearance USE mat
+            geometry DEF Link-31 Mesh {
+              url [
+                "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-31.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position 3.633074707067251e-07
+              axis -1 -4e-06 0
+              anchor 0.037602 -0.05 0
+            }
+            device [
+              RotationalMotor {
+                name "Joint-32"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "Joint-32_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.037602 -0.05 0
+              rotation 0.5615992490076512 -0.5615972490067958 0.6076304908594046 2.0495737959675995
+              children [
+                Shape {
+                  appearance USE mat
+                  geometry DEF Link-32 Mesh {
+                    url [
+                      "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-32.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 1.762258135653819e-05
+                    axis 1 7e-06 -1e-06
+                    anchor 0 -0.037398 0.025
+                  }
+                  device [
+                    RotationalMotor {
+                      name "Joint-33"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "Joint-33_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.037398 0.025
+                    rotation 0.7038946934908044 0.09520777810938771 0.7038946934470809 2.951759404437113
+                    children [
+                      Shape {
+                        appearance USE mat
+                        geometry DEF Link-33 Mesh {
+                          url [
+                            "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-33.STL"
+                          ]
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position -1.2926928472754804e-05
+                          axis 3e-06 -7e-06 -1
+                          anchor 0 0.2 0
+                        }
+                        device [
+                          RotationalMotor {
+                            name "Joint-34"
+                            maxTorque 10000
+                          }
+                          PositionSensor {
+                            name "Joint-34_sensor"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 0.2 0
+                          rotation -0.9815889882349552 -0.19100538781635687 -9.999758536987748e-07 3.1416000000078563
+                          children [
+                            Shape {
+                              appearance USE mat
+                              geometry DEF Link-34 Mesh {
+                                url [
+                                  "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-34.STL"
+                                ]
+                              }
+                            }
+                          ]
+                          name "Link-34"
+                          boundingObject USE Link-34
+                          physics Physics {
+                            density -1
+                            mass 1.3182
+                            centerOfMass [
+                              0.047942 0.21275 0.00054
+                            ]
+                            inertiaMatrix [
+                              0.028713 0.00066838 0.028833
+                              -0.00057712 3.2444e-05 0.00015134
+                            ]
+                          }
+                          linearVelocity -7.001132986909081e-07 -2.2525966510059966e-05 -1.3494941921032593e-06
+                          angularVelocity 7.930563500747653e-05 -9.90969901222415e-06 7.124346659008636e-05
+                        }
+                      }
+                    ]
+                    name "Link-33"
+                    boundingObject USE Link-33
+                    physics Physics {
+                      density -1
+                      mass 0.49632
+                      centerOfMass [
+                        0 0.1 0.002867
+                      ]
+                      inertiaMatrix [
+                        0.0019227 0.00020011 0.0019242
+                        -1.9327e-18 5.421e-20 -2.8376e-19
+                      ]
+                    }
+                    linearVelocity -2.085140610085697e-06 -3.7250806148568124e-05 -1.3856687665763933e-06
+                    angularVelocity 7.971020516784604e-05 -1.0237216964793468e-05 7.13622528946006e-05
+                  }
+                }
+              ]
+              name "Link-32"
+              boundingObject USE Link-32
+              physics Physics {
+                density -1
+                mass 0.12291
+                centerOfMass [
+                  -0.005788 -0.036825 0.004011
+                ]
+                inertiaMatrix [
+                  7.6838e-05 7.1867e-05 4.7075e-05
+                  -4.075e-07 1.327e-05 2.8244e-07
+                ]
+              }
+              linearVelocity -1.2318234410444523e-06 -3.164722142330853e-05 -1.0900786718286906e-06
+              angularVelocity 7.994684066217802e-05 -1.0426511009154166e-05 7.15207923867527e-05
+            }
+          }
+        ]
+        name "Link-31"
+        boundingObject USE Link-31
+        physics Physics {
+          density -1
+          mass 0.13426
+          centerOfMass [
+            0.000524 -0.048741 0
+          ]
+          inertiaMatrix [
+            5.9611e-05 5.5476e-05 6.1772e-05
+            8.862e-08 -5.294e-21 2.3868e-21
+          ]
+        }
+        linearVelocity 6.846321916854956e-07 -2.5013563240649168e-05 -1.8377697180028745e-06
+        angularVelocity 8.28885206540064e-05 -1.566277820471835e-05 -4.264312705458718e-05
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 7.966453188373721e-06
+        axis 1 1.1e-05 -1e-06
+        anchor -0.1082 0.05 0.012279
+      }
+      device [
+        RotationalMotor {
+          name "Joint-41"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "Joint-41_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.1082 0.05 0.012279
+        rotation 0.6000590848324455 0.6000650848193846 0.5290094410223248 4.114772780396352
+        children [
+          Shape {
+            appearance USE mat
+            geometry DEF Link-41 Mesh {
+              url [
+                "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-41.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position 7.731804252033061e-06
+              axis -1 -4e-06 0
+              anchor 0.038483 -0.05 0
+            }
+            device [
+              RotationalMotor {
+                name "Joint-42"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "Joint-42_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.038483 -0.05 0
+              rotation 0.5844129120795967 -0.5844109120844508 0.5629613077568173 2.1161164814462947
+              children [
+                Shape {
+                  appearance USE mat
+                  geometry DEF Link-42 Mesh {
+                    url [
+                      "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-42.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position -3.9541041046438175e-06
+                    axis 1 7e-06 -1e-06
+                    anchor 0 -0.036517 0.025
+                  }
+                  device [
+                    RotationalMotor {
+                      name "Joint-43"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "Joint-43_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.036517 0.025
+                    rotation 0.7049404394536128 0.07821734866725641 0.704940439463088 2.985486212592583
+                    children [
+                      Shape {
+                        appearance USE mat
+                        geometry DEF Link-43 Mesh {
+                          url [
+                            "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-43.STL"
+                          ]
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position 2.5997403586586536e-06
+                          axis 3e-06 -7e-06 -1
+                          anchor 0 0.2 0
+                        }
+                        device [
+                          RotationalMotor {
+                            name "Joint-44"
+                            maxTorque 10000
+                          }
+                          PositionSensor {
+                            name "Joint-44_sensor"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 0.2 0
+                          rotation -0.9722544587372449 -0.23392577340803422 -1.000005143240033e-06 3.141599999999274
+                          children [
+                            Shape {
+                              appearance USE mat
+                              geometry DEF Link-44 Mesh {
+                                url [
+                                  "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/FirstTry0314/meshes/Link-44.STL"
+                                ]
+                              }
+                            }
+                          ]
+                          name "Link-44"
+                          boundingObject USE Link-44
+                          physics Physics {
+                            density -1
+                            mass 1.3182
+                            centerOfMass [
+                              0.047942 0.21275 0.00054
+                            ]
+                            inertiaMatrix [
+                              0.028713 0.00066838 0.028833
+                              -0.00057712 3.2444e-05 0.00015134
+                            ]
+                          }
+                          linearVelocity -2.6649108562225186e-06 -2.6593543185016387e-06 -7.5191835158277295e-06
+                          angularVelocity -7.067378626122546e-06 -1.607217137036571e-05 -7.89151660606905e-05
+                        }
+                      }
+                    ]
+                    name "Link-43"
+                    boundingObject USE Link-43
+                    physics Physics {
+                      density -1
+                      mass 0.49632
+                      centerOfMass [
+                        0 0.1 0.002867
+                      ]
+                      inertiaMatrix [
+                        0.0019227 0.00020011 0.0019242
+                        1.3239e-18 2.7105e-20 -4.3707e-19
+                      ]
+                    }
+                    linearVelocity -1.9477227575892112e-06 -9.925448534704611e-06 -5.966976286812683e-06
+                    angularVelocity -6.432343552593216e-06 -1.6618390299439207e-05 -7.907721861828979e-05
+                  }
+                }
+              ]
+              name "Link-42"
+              boundingObject USE Link-42
+              physics Physics {
+                density -1
+                mass 0.12291
+                centerOfMass [
+                  -0.005788 -0.035945 0.004011
+                ]
+                inertiaMatrix [
+                  7.6838e-05 7.1867e-05 4.7075e-05
+                  -4.075e-07 1.327e-05 2.8244e-07
+                ]
+              }
+              linearVelocity -1.0934243171472565e-06 -1.270774896026287e-05 -5.33439405173476e-06
+              angularVelocity -6.071927115709403e-06 -1.6942118998121054e-05 -7.933657862220503e-05
+            }
+          }
+        ]
+        name "Link-41"
+        boundingObject USE Link-41
+        physics Physics {
+          density -1
+          mass 0.13426
+          centerOfMass [
+            0.000524 -0.048741 0
+          ]
+          inertiaMatrix [
+            5.9611e-05 5.5476e-05 6.1772e-05
+            8.862e-08 0 1.4261e-21
+          ]
+        }
+        linearVelocity 8.040609580537508e-07 -1.2248957741405752e-05 -5.458175402052776e-06
+        angularVelocity -6.507076009226118e-06 -1.2592948866884222e-05 -4.430537153062932e-05
+      }
+    }
+  ]
+  name "FirstTry0314"
+  boundingObject USE base_link
+  physics Physics {
+    density -1
+    mass 1.3313
+    centerOfMass [
+      -0.008197 -0.00733 0.1
+    ]
+    inertiaMatrix [
+      0.020645 0.023213 0.0034844
+      -3.7461e-19 -2.6999e-20 1.2187e-18
+    ]
+  }
+  controller "<extern>"
+  supervisor TRUE
+  linearVelocity -2.1182051169604907e-06 -1.2417985643526362e-05 -6.900109574264657e-07
+  angularVelocity -5.522500216252281e-05 -1.1234918235607331e-05 -4.5927231850672175e-05
+}
