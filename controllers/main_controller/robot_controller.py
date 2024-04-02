@@ -6,7 +6,6 @@ supervisor.simulationReset()
 
 
 class Control:
-
     def __init__(self, robot_node, angle_instructions, velocity_instruction):
         self.robot_node = supervisor.getFromDef(str(robot_node))
         self.angle_instructions = angle_instructions
@@ -20,13 +19,12 @@ class Control:
         return angle / 180 * math.pi
 
     def run(self):
-        print(self.robot_node)
-        self.motor.setPosition(3.14)
-        self.motor.setVelocity(1.0)
-        # for i, motor in enumerate(self.motors):
-        #     print(self.angle_conversion(self.angle_instructions[i]))
-        #     motor.setPosition(self.angle_conversion(self.angle_instructions[i]))
-        #     motor.setVelocity(self.velocity_instruction[i])
+        # self.motor.setPosition(3.14)
+        # self.motor.setVelocity(1.0)
+        for i, motor in enumerate(self.motors):
+            print(self.angle_conversion(self.angle_instructions[i]))
+            motor.setPosition(self.angle_conversion(self.angle_instructions[i]))
+            motor.setVelocity(self.velocity_instruction[i])
 
 
 if __name__ == "__main__":
