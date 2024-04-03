@@ -2,7 +2,6 @@ from controller import Supervisor
 import math
 
 supervisor = Supervisor()
-supervisor.simulationReset()
 
 
 class Control:
