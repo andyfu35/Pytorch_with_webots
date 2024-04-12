@@ -1,42 +1,69 @@
 from controller import Supervisor
 from robot_controller import Control
-
+import numpy as np
+import math
 
 supervisor = Supervisor()
 
 
 class EnvironmentCtrl:
-    def __init__(self):
-        super().__init__()
-        self.target_position = [0, 0, 0]
+    def __init__(self, angle_instruction_, velocity_instruction_):
+        # super().__init__()
+        self.robot = "Node_base"
+        self.robot_node = supervisor.getFromDef(self.robot)
+        self.target_position = [0.0, 7.0, 0.0]
+        self.ctrl = Control(supervisor, self.robot_node, angle_instruction_, velocity_instruction_)
+
+        self.position = self.robot_node.getPosition()
+        self.max_steps = 10000
+        self.current_step = 0
 
     @staticmethod
     def reset_environment():
         supervisor.simulationReset()
 
+    def update_position(self):
+        self.position = self.robot_node.getPosition()
+
     def get_state(self):
-        # 獲取狀態信息，例如機器人的位置和距離感測器的讀數
-        position = self.robot_node.getPosition()
-        distance = self.distance_sensor.getValue()
-        return position + (distance,)
+        self.update_position()
+        return np.round(np.array(self.position), 1)
+
+    def check_condition(self, i):
+        self.update_position()
+        return self.position[i] >= self.target_position[i]
+
+    def goal_achieved(self):
+        result = all(self.check_condition(_) for _ in range(3))
+        return result
 
     def calculate_reward(self):
-        # 根據機器人的當前狀態計算獎勵
-        position = self.robot_node.getPosition()
-        if self.goal_achieved(position):
-            return 100  # 達到目標的獎勵
-        else:
-            return -1  # 每一步的小懲罰，鼓勵快速達成目標
+        if self.goal_achieved():
+            return 1000
+        self.update_position()
+        distance = math.sqrt(sum((cp - tp) ** 2 for cp, tp in zip(self.get_state(), self.target_position)))
+        if self.get_state()[2] < 0 or distance > 100:
+            return -1
+        reward = 1 / (distance + 0.001)
+        return reward
 
-    def goal_achieved(self, position):
-        # 判斷是否達到目標
-        return all(abs(position[i] - self.target_position[i]) < 0.1 for i in range(3))
-
-    def step(self, action):
-        # 綜合步驟：執行動作，返回新的狀態、獎勵和是否結束
-        self.perform_action(action)
+    def step(self):
         supervisor.step(int(supervisor.getBasicTimeStep()))
+        self.current_step += 1
+
+        self.ctrl.run()
         new_state = self.get_state()
         reward = self.calculate_reward()
-        done = self.goal_achieved(new_state[:3])  # 假設狀態的前三個元素是位置
+        done = self.goal_achieved() or self.current_step >= self.max_steps
+        if done:
+            self.reset_environment()
+        print(new_state, reward, done)
         return new_state, reward, done
+
+
+if __name__ == "__main__":
+    angle_instruction = [180, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 180]
+    velocity_instruction = [1.0, 1.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.0]
+    Env = EnvironmentCtrl(angle_instruction, velocity_instruction)
+    while supervisor.step(int(supervisor.getBasicTimeStep())) != -1:
+        Env.step()
