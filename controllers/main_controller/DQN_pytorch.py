@@ -107,3 +107,4 @@ for frame_idx in range(1000):
 
     if done:
         env.reset()  # 如果完成則重置環境
+P
