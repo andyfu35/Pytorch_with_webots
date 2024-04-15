@@ -1,0 +1,215 @@
+#VRML_SIM R2023b utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the Severus
+# Extracted from: C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/Severus/urdf/Severus.urdf
+
+PROTO Severus [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "Severus"  # Is `Robot.name`.
+  field  SFString    controller      "void"     # Is `Robot.controller`.
+  field  MFString    controllerArgs  []         # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""         # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE      # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE       # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE      # Is `Robot.selfCollision`.
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+    children [
+      Shape {
+        appearance DEF base_link_material PBRAppearance {
+          baseColor 0.792157 0.819608 0.933333
+          roughness 1.000000
+          metalness 0
+        }
+        geometry DEF base_link Mesh {
+          url "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/Severus/meshes/base_link.STL"
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000000 -0.000004 1.000000
+          anchor 0.000000 0.000000 0.010000
+        }
+        device [
+          RotationalMotor {
+            name "Joint_11"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "Joint_11_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.000000 0.000000 0.010000
+          rotation 1.000000 0.000000 0.000000 1.570800
+          children [
+            Shape {
+              appearance DEF Link_11_material PBRAppearance {
+                baseColor 0.792157 0.819608 0.933333
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF Link_11 Mesh {
+                url "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/Severus/meshes/Link_11.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                anchor 0.000000 0.030000 0.000000
+              }
+              device [
+                RotationalMotor {
+                  name "Joint_12"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "Joint_12_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.000000 0.030000 0.000000
+                children [
+                  Shape {
+                    appearance DEF Link_12_material PBRAppearance {
+                      baseColor 0.792157 0.819608 0.933333
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF Link_12 Mesh {
+                      url "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/Severus/meshes/Link_12.STL"
+                    }
+                  }
+                  HingeJoint {
+                    jointParameters HingeJointParameters {
+                      anchor 0.000000 0.170000 -0.040000
+                    }
+                    device [
+                      RotationalMotor {
+                        name "Joint_13"
+                        maxTorque 10000
+                      }
+                      PositionSensor {
+                        name "Joint_13_sensor"
+                      }
+                    ]
+                    endPoint Solid {
+                      translation 0.000000 0.170000 -0.040000
+                      rotation 1.000000 0.000000 -0.000000 3.141600
+                      children [
+                        Shape {
+                          appearance DEF Link_13_material PBRAppearance {
+                            baseColor 0.792157 0.819608 0.933333
+                            roughness 1.000000
+                            metalness 0
+                          }
+                          geometry DEF Link_13 Mesh {
+                            url "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/Severus/meshes/Link_13.STL"
+                          }
+                        }
+                        HingeJoint {
+                          jointParameters HingeJointParameters {
+                            anchor 0.000000 -0.170000 0.000000
+                          }
+                          device [
+                            RotationalMotor {
+                              name "Joint_14"
+                              maxTorque 10000
+                            }
+                            PositionSensor {
+                              name "Joint_14_sensor"
+                            }
+                          ]
+                          endPoint Solid {
+                            translation 0.000000 -0.170000 0.000000
+                            children [
+                              Shape {
+                                appearance DEF Link_14_material PBRAppearance {
+                                  baseColor 0.792157 0.819608 0.933333
+                                  roughness 1.000000
+                                  metalness 0
+                                }
+                                geometry DEF Link_14 Mesh {
+                                  url "C:/Users/andyf/PycharmProjects/Pytorch_with_webots/protos/robots/Severus/meshes/Link_14.STL"
+                                }
+                              }
+                            ]
+                            name "Link_14"
+                            boundingObject USE Link_14
+                            physics Physics {
+                              density -1
+                              mass 0.111659
+                              centerOfMass [ 0.000961 -0.028237 -0.000000 ]
+                              inertiaMatrix [
+                                1.375842e-04 2.517977e-04 1.375806e-04
+                                -2.606804e-06 1.139915e-23 -4.027199e-21
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                      name "Link_13"
+                      boundingObject USE Link_13
+                      physics Physics {
+                        density -1
+                        mass 0.073603
+                        centerOfMass [ -0.002915 -0.085000 -0.000000 ]
+                        inertiaMatrix [
+                          2.742236e-04 1.321639e-05 2.767972e-04
+                          9.760957e-21 3.279274e-21 -1.406207e-20
+                        ]
+                      }
+                    }
+                  }
+                ]
+                name "Link_12"
+                boundingObject USE Link_12
+                physics Physics {
+                  density -1
+                  mass 0.091103
+                  centerOfMass [ 0.002355 0.102741 -0.006869 ]
+                  inertiaMatrix [
+                    4.111000e-04 3.259913e-05 3.986976e-04
+                    3.383938e-06 2.394956e-06 4.201310e-05
+                  ]
+                }
+              }
+            }
+          ]
+          name "Link_11"
+          boundingObject USE Link_11
+          physics Physics {
+            density -1
+            mass 0.019685
+            centerOfMass [ -0.005449 0.020765 -0.000000 ]
+            inertiaMatrix [
+              4.099907e-06 2.161216e-06 3.614860e-06
+              5.687175e-07 3.820046e-24 -3.372160e-22
+            ]
+          }
+        }
+      }
+    ]
+    name IS name
+    boundingObject USE base_link
+    physics Physics {
+      density -1
+      mass 0.089241
+      centerOfMass [ 0.000000 0.002550 0.000000 ]
+      inertiaMatrix [
+        1.244727e-04 2.485297e-04 1.244727e-04
+        0.000000e+00 0.000000e+00 -4.135903e-22
+      ]
+    }
+  }
+}
