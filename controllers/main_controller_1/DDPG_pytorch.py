@@ -6,6 +6,12 @@ import random
 from collections import deque
 from webots_environment import EnvironmentCtrl
 
+torch.autograd.set_detect_anomaly(True)
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print(f"Using device: {device}")
+
+
 class Actor(nn.Module):
     def __init__(self, state_size, action_size):
         super(Actor, self).__init__()
@@ -20,6 +26,7 @@ class Actor(nn.Module):
 
     def forward(self, state):
         return self.network(state)
+
 
 class Critic(nn.Module):
     def __init__(self, state_size, action_size):
@@ -38,13 +45,17 @@ class Critic(nn.Module):
         state_out = self.state_path(state)
         action_out = self.action_path(action)
         concat = torch.cat((state_out, action_out), dim=1)
-        return self.out(concat)
+        output = self.out(concat)
+        # print(f"Input to linear layer: {concat.shape}, Output from linear layer: {output.shape}")
+        return output
+
 
 def select_action(state, actor, noise_level):
     state = torch.FloatTensor(state).unsqueeze(0).to(device)
     action = actor(state).detach().cpu().numpy().flatten()
-    # 添加噪声进行探索
-    return np.clip(action + np.random.normal(0, noise_level, size=action.shape), -1, 1)
+    noisy_action = np.clip(action + np.random.normal(0, noise_level, size=action.shape), -1, 1)
+    return noisy_action
+
 
 class ReplayMemory:
     def __init__(self, capacity):
@@ -60,26 +71,28 @@ class ReplayMemory:
     def __len__(self):
         return len(self.memory)
 
+
 def update_model(memory, actor, critic, actor_optimizer, critic_optimizer, batch_size, gamma):
     if len(memory) < batch_size:
         return
     states, actions, rewards, next_states, dones = memory.sample(batch_size)
 
-    states = torch.FloatTensor(states).to(device)
-    actions = torch.FloatTensor(actions).to(device)
-    rewards = torch.FloatTensor(rewards).to(device)
-    next_states = torch.FloatTensor(next_states).to(device)
-    dones = torch.FloatTensor(dones).to(device)
+    states = torch.FloatTensor(states).to(device).clone()
+    actions = torch.FloatTensor(actions).to(device).clone()
+    rewards = torch.FloatTensor(rewards).to(device).view(-1, 1).clone()
+    next_states = torch.FloatTensor(next_states).to(device).clone()
+    dones = torch.FloatTensor(dones).to(device).view(-1, 1).clone()
 
     # Critic loss
-    current_Q_values = critic(states, actions)
-    next_actions = actor(next_states)
-    next_Q_values = critic(next_states, next_actions.detach())
-    expected_Q_values = rewards + gamma * next_Q_values * (1 - dones)
-    critic_loss = nn.MSELoss()(current_Q_values, expected_Q_values.detach())
+    current_q_values = critic(states, actions)
+    next_actions = actor(next_states).detach()
+    next_q_values = critic(next_states, next_actions.detach())
+    expected_q_values = rewards + gamma * next_q_values * (1 - dones)
+    critic_loss = nn.MSELoss()(current_q_values, expected_q_values.detach())
 
     # Actor loss
-    policy_loss = -critic(states, actor(states)).mean()
+    actor_states = actor(states).detach()
+    policy_loss = -critic(states, actor_states).mean()
 
     # Update networks
     critic_optimizer.zero_grad()
@@ -87,11 +100,15 @@ def update_model(memory, actor, critic, actor_optimizer, critic_optimizer, batch
     critic_optimizer.step()
 
     actor_optimizer.zero_grad()
+    for name, param in critic.named_parameters():
+        print(f"{name} - grad before backward: {param.grad}")
     policy_loss.backward()
+    for name, param in critic.named_parameters():
+        print(f"{name} - grad after backward: {param.grad}")
     actor_optimizer.step()
 
+
 def train_ddpg():
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     env = EnvironmentCtrl()
     state_dim = env.get_state().shape[0]
     action_dim = 8  # 为四个电机的位置和速度
@@ -105,7 +122,8 @@ def train_ddpg():
     gamma = 0.99
 
     for episode in range(episodes):
-        state = env.reset()
+        state = env.reset_environment()
+        print(f"Initial state shape: {state.shape}")
         episode_reward = 0
         while True:
             action = select_action(state, actor, 0.1)  # 噪声参数可调整
@@ -117,6 +135,7 @@ def train_ddpg():
             if done:
                 break
         print(f"Episode {episode} Reward: {episode_reward}")
+
 
 if __name__ == "__main__":
     train_ddpg()

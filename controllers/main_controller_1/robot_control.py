@@ -2,46 +2,48 @@ from controller import Supervisor
 import math
 import numpy as np
 
-# supervisor = Supervisor()
+#
 # supervisor.simulationReset()
 
 
 class Control:
-    def __init__(self, supervisor, robot_node, action_instruction):
+    def __init__(self, supervisor, robot_node):
         self.supervisor = supervisor
         self.timestep = int(self.supervisor.getBasicTimeStep())
         self.robot_node = robot_node
-        self.angle_instructions = action_instruction[0]
-        self.velocity_instruction = action_instruction[1]
         self.position = self.robot_node.getPosition()
-        self.motor_names = ['Joint-11', 'Joint-12', 'Joint-13', 'Joint-14']
+        self.motor_names = ['Joint_11', 'Joint_12', 'Joint_13', 'Joint_14']
         self.motors = [self.supervisor.getDevice(name) for name in self.motor_names]
         self.sensors = [self.supervisor.getDevice(name+"_sensor") for name in self.motor_names]
         for sensor in self.sensors:
             sensor.enable(self.timestep)
         self.joint_value = np.zeros((len(self.motors), 1))
+        self.min_position = np.round(np.array(-math.pi), 4)
+        self.max_position = np.round(np.array(math.pi), 4)
+        self.min_velocity = 0.0
+        self.max_velocity = 3.0
 
     def sensor_value(self):
         for i, sensor in enumerate(self.sensors):
             self.joint_value[i] = sensor.getValue()
-        print(np.round(self.joint_value.flatten(), 3))
+        # print(np.round(self.joint_value.flatten(), 3))
         return np.round(self.joint_value.flatten(), 3)
 
     def current_position(self):
-        print(np.round(np.array(self.position), 1))
+        # print(np.round(np.array(self.position), 1))
         return np.round(np.array(self.position), 1)
 
-    def next_action(self):
-        for i, motor in enumerate(self.motors):
-            motor.setPosition(self.angle_instructions[i])
-            motor.setVelocity(self.velocity_instruction[i])
+    def next_action(self, action_instruction):
+        for i, motor in enumerate(self.motors, ):
+            motor_position = np.interp(action_instruction[2*i], [-1, 1], [self.min_position, self.max_position])
+            motor_velocity = np.interp(action_instruction[2*i+1], [-1, 1], [self.min_velocity, self.max_velocity])
+            motor.setPosition(motor_position)
+            motor.setVelocity(motor_velocity)
 
 
-# if __name__ == "__main__":
-#     angle_instruction = [180, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 180]
-#     velocity_instruction = [1.0, 1.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.0]
-#     ctrl_1 = Control('Node_base', angle_instruction, velocity_instruction)
-#     while supervisor.step(ctrl_1.timestep) != -1:
-#         ctrl_1.run()
-#         ctrl_1.sensor_value()
-#         ctrl_1.current_position()
+if __name__ == '__main__':
+    supervisor_ = Supervisor()
+    while supervisor_.step(64) != -1:
+        robot_node_ = supervisor_.getFromDef('Severus_node')
+        ctrl = Control(supervisor_, robot_node_)
+        ctrl.next_action([180, 1.0, 180, 1.0, 0, 0, 0, 0])

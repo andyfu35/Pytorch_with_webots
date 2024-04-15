@@ -7,6 +7,7 @@ from collections import deque
 from environmental_controller import EnvironmentCtrl
 from robot_controller import Control
 
+
 # 定義DQN模型
 class DQN(nn.Module):
     def __init__(self, state_dim, action_dim, hidden_dim=64):

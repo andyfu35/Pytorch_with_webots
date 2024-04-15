@@ -15,15 +15,16 @@ class Control:
         self.angle_instructions = angle_instruction
         self.velocity_instruction = velocity_instruction
         self.position = self.robot_node.getPosition()
-        self.motor_names = ['Joint-11', 'Joint-12', 'Joint-13', 'Joint-14',
-                            'Joint-21', 'Joint-22', 'Joint-23', 'Joint-24',
-                            'Joint-31', 'Joint-32', 'Joint-33', 'Joint-34',
-                            'Joint-41', 'Joint-42', 'Joint-43', 'Joint-44']
+        # self.motor_names = ['Joint-11', 'Joint-12', 'Joint-13', 'Joint-14',
+        #                     'Joint-21', 'Joint-22', 'Joint-23', 'Joint-24',
+        #                     'Joint-31', 'Joint-32', 'Joint-33', 'Joint-34',
+        #                     'Joint-41', 'Joint-42', 'Joint-43', 'Joint-44']
+        self.motor_names = ['Joint_11', 'Joint_12', 'Joint_13', 'Joint_14']
         self.motors = [self.supervisor.getDevice(name) for name in self.motor_names]
         self.sensors = [self.supervisor.getDevice(name+"_sensor") for name in self.motor_names]
         for sensor in self.sensors:
             sensor.enable(self.timestep)
-        self.joint_value = np.zeros((16, 1))
+        self.joint_value = np.zeros((4, 1))
 
     @staticmethod
     def angle_conversion(angle):

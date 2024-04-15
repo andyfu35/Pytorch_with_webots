@@ -9,7 +9,7 @@ supervisor = Supervisor()
 class EnvironmentCtrl:
     def __init__(self, angle_instruction_, velocity_instruction_):
         # super().__init__()
-        self.robot = "Node_base"
+        self.robot = "Severus_node"
         self.robot_node = supervisor.getFromDef(self.robot)
         self.target_position = [0.0, 7.0, 0.0]
         self.ctrl = Control(supervisor, self.robot_node, angle_instruction_, velocity_instruction_)
@@ -62,8 +62,10 @@ class EnvironmentCtrl:
 
 
 if __name__ == "__main__":
-    angle_instruction = [180, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 180]
-    velocity_instruction = [1.0, 1.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.0]
+    # angle_instruction = [180, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 180]
+    # velocity_instruction = [1.0, 1.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.0]
+    angle_instruction = [180, 0, 0, 0]
+    velocity_instruction = [1.0, 0, 0, 0]
     Env = EnvironmentCtrl(angle_instruction, velocity_instruction)
     while supervisor.step(int(supervisor.getBasicTimeStep())) != -1:
         Env.step()
