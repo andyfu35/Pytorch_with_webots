@@ -75,37 +75,33 @@ class ReplayMemory:
 def update_model(memory, actor, critic, actor_optimizer, critic_optimizer, batch_size, gamma):
     if len(memory) < batch_size:
         return
+
+    # 获取数据并准备张量
     states, actions, rewards, next_states, dones = memory.sample(batch_size)
+    states = torch.FloatTensor(states).to(device)
+    actions = torch.FloatTensor(actions).to(device)
+    rewards = torch.FloatTensor(rewards).to(device).view(-1, 1)
+    next_states = torch.FloatTensor(next_states).to(device)
+    dones = torch.FloatTensor(dones).to(device).view(-1, 1)
 
-    states = torch.FloatTensor(states).to(device).clone()
-    actions = torch.FloatTensor(actions).to(device).clone()
-    rewards = torch.FloatTensor(rewards).to(device).view(-1, 1).clone()
-    next_states = torch.FloatTensor(next_states).to(device).clone()
-    dones = torch.FloatTensor(dones).to(device).view(-1, 1).clone()
-
-    # Critic loss
+    # 计算Critic的损失
     current_q_values = critic(states, actions)
-    next_actions = actor(next_states).detach()
-    next_q_values = critic(next_states, next_actions.detach())
+    next_actions = actor(next_states).detach()  # 使用detach，确保没有梯度传播
+    next_q_values = critic(next_states, next_actions)
     expected_q_values = rewards + gamma * next_q_values * (1 - dones)
     critic_loss = nn.MSELoss()(current_q_values, expected_q_values.detach())
 
-    # Actor loss
-    actor_states = actor(states).detach()
-    policy_loss = -critic(states, actor_states).mean()
-
-    # Update networks
     critic_optimizer.zero_grad()
     critic_loss.backward()
     critic_optimizer.step()
 
+    # 计算Actor的损失
     actor_optimizer.zero_grad()
-    for name, param in critic.named_parameters():
-        print(f"{name} - grad before backward: {param.grad}")
+    policy_loss = -critic(states, actor(states)).mean()  # 确保actor(states)在这里计算梯度
     policy_loss.backward()
-    for name, param in critic.named_parameters():
-        print(f"{name} - grad after backward: {param.grad}")
     actor_optimizer.step()
+
+# 确保其他所有用到的方法和处理也都遵循不修改原始张量的原则
 
 
 def train_ddpg():

@@ -18,8 +18,8 @@ class Control:
         for sensor in self.sensors:
             sensor.enable(self.timestep)
         self.joint_value = np.zeros((len(self.motors), 1))
-        self.min_position = np.round(np.array(-math.pi), 4)
-        self.max_position = np.round(np.array(math.pi), 4)
+        self.min_position = np.round(np.array(-math.pi)/2, 4)
+        self.max_position = np.round(np.array(math.pi)/2, 4)
         self.min_velocity = 0.0
         self.max_velocity = 3.0
 

@@ -68,7 +68,7 @@ class EnvironmentCtrl:
         done = self.goal_achieved() or self.current_step >= self.max_steps
         if done:
             self.reset_environment()
-        print(new_state, reward, done)
+        # print(new_state, reward, done)
         return new_state, reward, done
 
 
