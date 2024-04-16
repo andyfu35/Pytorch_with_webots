@@ -7,8 +7,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.16545917684627512 0.40988828475956346 0.8970032635471379 0.7347216318391719
-  position -8.66796669656863 -7.278939308391884 4.048357075185639
+  position -3.7088396712567446 3.716243133922755e-08 0.022687957626359605
+  follow "Severus"
 }
 TexturedBackground {
 }

@@ -20,6 +20,8 @@ class Control:
         self.joint_value = np.zeros((len(self.motors), 1))
         self.min_position = np.round(np.array(-math.pi)/2, 4)
         self.max_position = np.round(np.array(math.pi)/2, 4)
+        self.joint_3_min_position = 0
+        self.joint_3_max_position = np.round(np.array(-math.pi) * 3 / 4, 4)
         self.min_velocity = 0.0
         self.max_velocity = 3.0
 
@@ -35,7 +37,10 @@ class Control:
 
     def next_action(self, action_instruction):
         for i, motor in enumerate(self.motors, ):
-            motor_position = np.interp(action_instruction[2*i], [-1, 1], [self.min_position, self.max_position])
+            if i == 3:
+                motor_position = np.interp(action_instruction[2 * i], [-1, 1], [self.joint_3_min_position, self.joint_3_max_position])
+            else:
+                motor_position = np.interp(action_instruction[2*i], [-1, 1], [self.min_position, self.max_position])
             motor_velocity = np.interp(action_instruction[2*i+1], [-1, 1], [self.min_velocity, self.max_velocity])
             motor.setPosition(motor_position)
             motor.setVelocity(motor_velocity)
