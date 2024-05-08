@@ -52,9 +52,9 @@ class EnvironmentCtrl:
         velocity = self.calculate_velocity()
 
         if is_standing:
-            reward = 10  # 站立時給予正向獎勵
+            reward = 10
         elif has_fallen:
-            reward = -50  # 摔倒時給予大量負分
+            reward = -50
         else:
             # 根據距離變化給予獎勵
             if current_distance < previous_distance:

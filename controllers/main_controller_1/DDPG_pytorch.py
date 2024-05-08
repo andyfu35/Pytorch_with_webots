@@ -21,7 +21,7 @@ class Actor(nn.Module):
             nn.Linear(400, 300),
             nn.ReLU(),
             nn.Linear(300, action_size),
-            nn.Tanh()  # 输出的行动在-1到1之间
+            nn.Tanh()
         )
 
     def forward(self, state):
@@ -97,11 +97,10 @@ def update_model(memory, actor, critic, actor_optimizer, critic_optimizer, batch
 
     # 计算Actor的损失
     actor_optimizer.zero_grad()
-    policy_loss = -critic(states, actor(states)).mean()  # 确保actor(states)在这里计算梯度
+    policy_loss = -critic(states, actor(states)).mean()
     policy_loss.backward()
     actor_optimizer.step()
 
-# 确保其他所有用到的方法和处理也都遵循不修改原始张量的原则
 
 
 def train_ddpg():
@@ -122,7 +121,7 @@ def train_ddpg():
         print(f"Initial state shape: {state.shape}")
         episode_reward = 0
         while True:
-            action = select_action(state, actor, 0.1)  # 噪声参数可调整
+            action = select_action(state, actor, 0.1)
             next_state, reward, done = env.step(action)
             memory.push(state, action, reward, next_state, done)
             update_model(memory, actor, critic, actor_optimizer, critic_optimizer, batch_size, gamma)
