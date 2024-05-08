@@ -16,5 +16,3 @@ but it sometimes has some problem. For example, your robot can't display in webo
 If you want to run that. First, open webots then launch `Simulation_world.wbt`. 
 After that, run [DDPG_pytorch.py](controllers%2Fmain_controller_1%2FDDPG_pytorch.py). 
 And you will see it started training. But it still has many bugs. I will optimize it.
-
-![圖片描述](C:\Users\andyf\PycharmProjects\Pytorch_with_webots\protos\robots\Simulation_world.png)
