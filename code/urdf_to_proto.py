@@ -1,2 +1,2 @@
 from urdf2webots.importer import convertUrdfFile
-convertUrdfFile(r'protos\robots\Severus\urdf\Severus.urdf')
+convertUrdfFile(r'C:\Users\andyf\PycharmProjects\Pytorch_with_webots\protos\robots\Severus_1\urdf\Severus_1.urdf')

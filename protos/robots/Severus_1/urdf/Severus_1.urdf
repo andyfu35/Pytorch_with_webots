@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Severus_1">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-1.6476E-17 0.16214 1.7188E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.024892" />
+      <inertia
+        ixx="1.0353E-05"
+        ixy="-1.0923E-21"
+        ixz="-9.3058E-22"
+        iyy="1.5627E-05"
+        iyz="3.3417E-22"
+        izz="7.5413E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Link_11">
+    <inertial>
+      <origin
+        xyz="-0.005742 0 -1.7225E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.0033525" />
+      <inertia
+        ixx="1.2441E-07"
+        ixy="-9.5724E-24"
+        ixz="-2.4511E-24"
+        iyy="1.9435E-07"
+        iyz="2.6296E-25"
+        izz="2.0287E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_11.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_11.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_11"
+    type="continuous">
+    <origin
+      xyz="-0.02 0 0.14812"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_11" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Link_12">
+    <inertial>
+      <origin
+        xyz="-0.0098841 -0.027374 5.9674E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.02541" />
+      <inertia
+        ixx="1.8947E-05"
+        ixy="-8.0624E-08"
+        ixz="-1.522E-22"
+        iyy="2.1018E-06"
+        iyz="-9.2115E-21"
+        izz="1.7357E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_12.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_12.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_12"
+    type="continuous">
+    <origin
+      xyz="-0.0175 0 0"
+      rpy="2.5307 0 0" />
+    <parent
+      link="Link_11" />
+    <child
+      link="Link_12" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="Link_13">
+    <inertial>
+      <origin
+        xyz="-0.005 -0.040482 3.4694E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.009669" />
+      <inertia
+        ixx="7.878E-06"
+        ixy="1.6532E-21"
+        ixz="-3.4437E-23"
+        iyy="3.2746E-07"
+        iyz="8.9997E-22"
+        izz="7.5933E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_13.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_13.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_13"
+    type="continuous">
+    <origin
+      xyz="-0.005 -0.07 0"
+      rpy="1.1345 0 0" />
+    <parent
+      link="Link_12" />
+    <child
+      link="Link_13" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="Link_14">
+    <inertial>
+      <origin
+        xyz="-0.00500000000000002 -0.00952810322272496 0.00950499909017666"
+        rpy="0 0 0" />
+      <mass
+        value="0.0180342917352885" />
+      <inertia
+        ixx="5.05303717496673E-06"
+        ixy="-2.10409767457236E-23"
+        ixz="2.69571912809291E-22"
+        iyy="6.05790585277192E-06"
+        iyz="8.08906233059054E-08"
+        izz="1.4576451211458E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_14.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_14.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_14"
+    type="continuous">
+    <origin
+      xyz="0 -0.0875 0"
+      rpy="-0.5236 0 0" />
+    <parent
+      link="Link_13" />
+    <child
+      link="Link_14" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="Link_21">
+    <inertial>
+      <origin
+        xyz="-0.00574200859091186 0 -1.69896116114315E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.00335246123733575" />
+      <inertia
+        ixx="1.24413412730388E-07"
+        ixy="-3.06887560375041E-25"
+        ixz="1.80209057521074E-24"
+        iyy="1.94351591408284E-07"
+        iyz="1.04258005381487E-24"
+        izz="2.02865184781049E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_21.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_21.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_21"
+    type="continuous">
+    <origin
+      xyz="0.02 0 0.14812"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_21" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Link_22">
+    <inertial>
+      <origin
+        xyz="-0.00988409047286153 -0.0273742406583679 -1.69309011255336E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.025409844949343" />
+      <inertia
+        ixx="1.89468841854314E-05"
+        ixy="-8.06237937655535E-08"
+        ixz="-1.58818677610181E-22"
+        iyy="2.10175576624801E-06"
+        iyz="-1.01643953670516E-20"
+        izz="1.73574273030482E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_22.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_22.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_22"
+    type="continuous">
+    <origin
+      xyz="-0.0175 0 0"
+      rpy="0.61087 0 0" />
+    <parent
+      link="Link_21" />
+    <child
+      link="Link_22" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="Link_23">
+    <inertial>
+      <origin
+        xyz="-0.005 -0.0404822955357177 1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.00966897109721958" />
+      <inertia
+        ixx="7.87804513826546E-06"
+        ixy="-1.95728282103972E-23"
+        ixz="-1.13844502096177E-23"
+        iyy="3.2746084733151E-07"
+        iyz="2.35581038455102E-21"
+        izz="7.59332603976631E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_23.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_23.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_23"
+    type="continuous">
+    <origin
+      xyz="-0.005 -0.07 0"
+      rpy="-1.1345 0 0" />
+    <parent
+      link="Link_22" />
+    <child
+      link="Link_23" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="Link_24">
+    <inertial>
+      <origin
+        xyz="0.00500000000000001 -0.00952810322272496 0.00950499909017666"
+        rpy="0 0 0" />
+      <mass
+        value="0.0180342917352885" />
+      <inertia
+        ixx="5.05303717496672E-06"
+        ixy="-7.47898906715118E-23"
+        ixz="-7.8228964090395E-23"
+        iyy="6.05790585277192E-06"
+        iyz="8.08906233059055E-08"
+        izz="1.4576451211458E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_24.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Severus_1/meshes/Link_24.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_24"
+    type="continuous">
+    <origin
+      xyz="0 -0.0875 0"
+      rpy="2.618 0 3.1416" />
+    <parent
+      link="Link_23" />
+    <child
+      link="Link_24" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+</robot>

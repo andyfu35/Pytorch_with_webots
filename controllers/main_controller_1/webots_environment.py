@@ -8,7 +8,7 @@ supervisor = Supervisor()
 
 class EnvironmentCtrl:
     def __init__(self):
-        self.robot = "Severus_node"
+        self.robot = "Node_Severus"
         self.robot_node = supervisor.getFromDef(self.robot)
         self.target_position = [0.0, 7.0, 0.0]
         self.ctrl = Control(supervisor, self.robot_node)
@@ -21,7 +21,7 @@ class EnvironmentCtrl:
         supervisor.simulationReset()
         supervisor.step(0)
         self.current_step = 0
-        self.previous_position = self.robot_node.getPosition()  # 重置前一位置
+        self.previous_position = self.robot_node.getPosition()
         self.position = self.robot_node.getPosition()
         return self.get_state()
 
@@ -51,10 +51,16 @@ class EnvironmentCtrl:
         previous_distance = np.linalg.norm(np.array(self.target_position) - np.array(self.previous_position))
         velocity = self.calculate_velocity()
 
-        if current_distance < previous_distance:
-            reward = velocity * 10 / (current_distance + 0.1)
+        if is_standing:
+            reward = 10  # 站立時給予正向獎勵
+        elif has_fallen:
+            reward = -50  # 摔倒時給予大量負分
         else:
-            reward = -velocity * 5 / (current_distance + 0.1)
+            # 根據距離變化給予獎勵
+            if current_distance < previous_distance:
+                reward = velocity * 10 / (current_distance + 0.1)
+            else:
+                reward = -velocity * 5 / (current_distance + 0.1)
             
         return reward
 

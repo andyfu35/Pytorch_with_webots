@@ -107,7 +107,7 @@ def update_model(memory, actor, critic, actor_optimizer, critic_optimizer, batch
 def train_ddpg():
     env = EnvironmentCtrl()
     state_dim = env.get_state().shape[0]
-    action_dim = 8  # 为四个电机的位置和速度
+    action_dim = 16  # 为四个电机的位置和速度
     actor = Actor(state_dim, action_dim).to(device)
     critic = Critic(state_dim, action_dim).to(device)
     actor_optimizer = optim.Adam(actor.parameters(), lr=0.0001)
