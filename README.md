@@ -17,4 +17,4 @@ If you want to run that. First, open webots then launch `Simulation_world.wbt`.
 After that, run [DDPG_pytorch.py](controllers%2Fmain_controller_1%2FDDPG_pytorch.py). 
 And you will see it started training. But it still has many bugs. I will optimize it.
 
-![](https://github.com/andyfu35/Pytorch_with_webots/blob/Pytorch_with_webots/protos/Severus1.proto)
+![](https://github.com/andyfu35/Pytorch_with_webots/blob/Pytorch_with_webots/protos/robots/Simulation_world.png)
